@@ -1,13 +1,10 @@
 {% extends "base.html" %}
-  <head>    
-    {% block title %}
-      {{ details.location }}. {{ details.date }}
-    {% endblock %}
-  </head>
+{% block title %}
+  {{ post.location }}. {{ post.date }}
+{% endblock %}
   <body>	   
     <main>
       {% block content %}
-        <div class="container py-5">
           <article>
             <ul>
               <li>

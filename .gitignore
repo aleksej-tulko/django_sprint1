@@ -152,3 +152,7 @@ media/
 build_tests/
 yap_testing
 html/img/img/
+
+# Static
+static/
+html/
