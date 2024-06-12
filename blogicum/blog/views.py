@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.http import Http404
+from typing import Union
 
-posts = [
+posts: list[dict[str, Union[str, int]]] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -45,18 +47,25 @@ posts = [
 
 
 def index(request):
-    template = 'blog/index.html'
-    context = {'list_of_blogs': reversed(posts)}
-    return render(request, template, context)
+    return render(
+        request, 'blog/index.html',
+        context={'list_of_blogs': reversed(posts)}
+    )
 
 
-def post_detail(request, id):
-    template = 'blog/detail.html'
-    context = {'post': posts[id]}
-    return render(request, template, context)
+def post_detail(request, post_id):
+    posts_dict = {post['id']: post for post in posts}
+    if post_id not in posts_dict.keys():
+        raise Http404
+    else:
+        return render(
+            request, 'blog/detail.html',
+            context={'post': posts_dict[post_id]}
+        )
 
 
 def category_posts(request, category_slug):
-    template = 'blog/category.html'
-    context = {'category': category_slug}
-    return render(request, template, context)
+    return render(
+        request, 'blog/category.html', 
+        context={'category': category_slug}
+    )
