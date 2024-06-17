@@ -19,11 +19,11 @@
     {% include "includes/header.html" %}
     <main>
       <div class="container py-5">
-      {% block content %} главное {% endblock %}
+        {% if not post %}
+          {% block content %} главное {% endblock %}
+        {% endif %}   
         {% if post or list_of_blogs %}
-          {% block info %}
-            {% include "includes/info.html" %}
-          {% endblock %}  
+          {% block info %} {% include "includes/info.html" %} {% endblock %}  
         {% endif %}   
       </div>   
     </main>
