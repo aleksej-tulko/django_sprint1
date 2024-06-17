@@ -1,36 +1,30 @@
 {% extends "base.html" %}
 {% block title %}
   Лента записей
-{% endblock %}
-  <body>	   
-    <main>
-      {% block content %}
-          <h1>Лента записей</h1>                        
-          <hr>
-          {% block article %}
-            <ul>
-              {% for blog in list_of_blogs %}
-                <li>
-                  Место: {{ blog.location }}              
-                </li>
-                <li>
-                  Дата: {{ blog.date }}
-                </li>
-                <li>
-                  Категория: <a href="{% url 'blog:category_posts' blog.category %}">{{ blog.category }}</a>
-                </li>
-                <p>
-                  {{ blog.text|truncatewords:10 }}
-                </p>
-                <a href="{% url 'blog:post_detail' blog.id %}">Читать полный текст</a>
-                {% if not forloop.last %}
-                  <hr>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          {% endblock %}           
-        </div>
-      {% endblock %}
-    </main>
-  </body>
-</html>
+{% endblock %}   
+  {% block content %}
+      <h1>Лента записей</h1>                        
+      <hr>
+      {% block info %}
+        <ul>
+          {% for blog in list_of_blogs %}
+            <li>
+              Место: {{ blog.location }}              
+            </li>
+            <li>
+              Дата: {{ blog.date }}
+            </li>
+            <li>
+              Категория: <a href="{% url 'blog:category_posts' blog.category %}">{{ blog.category }}</a>
+            </li>
+            <p>
+              {{ blog.text|truncatewords:10 }}
+            </p>
+            <a href="{% url 'blog:post_detail' blog.id %}">Читать полный текст</a>
+            {% if not forloop.last %}
+              <hr>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endblock %}           
+  {% endblock %}

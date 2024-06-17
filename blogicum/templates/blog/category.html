@@ -2,12 +2,6 @@
 {% block title %}
   Публикации в категории {{ category }}
 {% endblock %} 
-  <body>	   
-    <main>
-      {% block content %}
-          <h1>Публикации в категории {{ category }}</h1>   
-        </div>
-      {% endblock %}  
-    </main>
-  </body>
-</html>
+  {% block content %}
+      <h1>Публикации в категории {{ category }}</h1>   
+  {% endblock %}  
