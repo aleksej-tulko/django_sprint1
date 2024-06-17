@@ -21,9 +21,9 @@
       <div class="container py-5">
       {% block content %} главное {% endblock %}
         {% if post or list_of_blogs %}
-          <article> 
-            {% block info %} {% include "includes/info.html" %} {% endblock %}
-          </article>
+          {% block info %}
+            {% include "includes/info.html" %}
+          {% endblock %}  
         {% endif %}   
       </div>   
     </main>
