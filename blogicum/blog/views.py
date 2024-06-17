@@ -1,6 +1,7 @@
+from typing import Union
+
 from django.shortcuts import render
 from django.http import Http404
-from typing import Union
 
 posts: list[dict[str, Union[str, int]]] = [
     {
@@ -44,6 +45,7 @@ posts: list[dict[str, Union[str, int]]] = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
+posts_dict = {post['id']: post for post in posts}
 
 
 def index(request):
@@ -54,14 +56,12 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    posts_dict = {post['id']: post for post in posts}
-    if post_id not in posts_dict.keys():
-        raise Http404
-    else:
-        return render(
-            request, 'blog/detail.html',
-            context={'post': posts_dict[post_id]}
-        )
+    if post_id not in posts_dict:
+        raise Http404("Страница не найдена")
+    return render(
+        request, 'blog/detail.html',
+        context={'post': posts_dict[post_id]}
+    )
 
 
 def category_posts(request, category_slug):

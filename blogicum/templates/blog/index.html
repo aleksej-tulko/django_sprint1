@@ -7,7 +7,7 @@
       {% block content %}
           <h1>Лента записей</h1>                        
           <hr>
-          <article>
+          {% block article %}
             <ul>
               {% for blog in list_of_blogs %}
                 <li>
@@ -23,11 +23,12 @@
                   {{ blog.text|truncatewords:10 }}
                 </p>
                 <a href="{% url 'blog:post_detail' blog.id %}">Читать полный текст</a>
-              {% if not forloop.last %}
-                <hr>
-              {% endif %}
+                {% if not forloop.last %}
+                  <hr>
+                {% endif %}
               {% endfor %}
-            </ul>          
+            </ul>
+          {% endblock %}           
         </div>
       {% endblock %}
     </main>
