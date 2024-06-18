@@ -5,26 +5,16 @@
   {% block content %}
     <h1>Лента записей</h1>                        
     <hr>
-    {% block info %}
       <ul>
-        {% for blog in list_of_blogs %}
-          <li>
-            Место: {{ blog.location }}              
-          </li>
-          <li>
-            Дата: {{ blog.date }}
-          </li>
-          <li>
-            Категория: <a href="{% url 'blog:category_posts' blog.category %}">{{ blog.category }}</a>
-          </li>
+        {% for post in list_of_blogs %}
+          {% include "includes/info.html" %}
           <p>
-            {{ blog.text|truncatewords:10 }}
+            {{ post.text|truncatewords:10 }}
           </p>
-          <a href="{% url 'blog:post_detail' blog.id %}">Читать полный текст</a>
+          <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
           {% if not forloop.last %}
             <hr>
           {% endif %}
         {% endfor %}
-      </ul>
-    {% endblock %}           
+      </ul>        
   {% endblock %}

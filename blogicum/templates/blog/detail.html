@@ -2,20 +2,11 @@
 {% block title %}
   {{ post.location }}. {{ post.date }}
 {% endblock %}
-  {% block content %}{% endblock %} 
-    {% block info %}
-      <ul>
-        <li>
-          Место: {{ post.location }}              
-        </li>
-        <li>
-          Дата: {{ post.date }}
-        </li>
-        <li>
-          Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
-        </li>
-      </ul>         
-      <p>
-        {{ post.text|linebreaks }}
-      </p>          
-    {% endblock %} 
+  {% block content %} 
+    <ul>
+      {% include "includes/info.html" %}
+    </ul>         
+    <p>
+      {{ post.text|linebreaks }}
+    </p>
+    {% endblock %}
