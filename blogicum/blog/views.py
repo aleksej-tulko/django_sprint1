@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from typing import Union
 
 from django.shortcuts import render
@@ -69,3 +70,42 @@ def category_posts(request, category_slug):
         request, 'blog/category.html',
         context={'category': category_slug}
     )
+=======
+from django.shortcuts import get_object_or_404, render
+
+from .models import Post, Category
+
+
+def index(request):
+    posts = Post.objects.select_related(
+        'location', 'author', 'category').filter(
+        pub_date__lte=now(),
+        is_published=True,
+        category__is_published=True
+    )
+    return render(request, 'blog/index.html', {'post_list': posts})
+
+
+def post_detail(request, id):
+    posts = get_object_or_404(
+        Post.objects.select_related('location', 'author', 'category').filter(
+            pub_date__lte=now(),
+            is_published=True,
+            category__is_published=True
+        ), id=id)
+    return render(request, 'blog/detail.html', {'post': posts})
+
+
+def category_posts(request, category_slug):
+    category = get_object_or_404(
+        Category.objects.filter(
+            slug=category_slug,
+            is_published=True
+        )
+    )
+    post_list = Post.objects.filter(
+        pub_date__lte=now()
+    )
+    return render(request, 'blog/category.html',
+                  {'category': category, 'post_list': post_list})
+>>>>>>> 6f61790 (index)

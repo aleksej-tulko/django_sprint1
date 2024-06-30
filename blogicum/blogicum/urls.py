@@ -15,9 +15,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+<<<<<<< HEAD
 
 urlpatterns = [
     path('', include('blog.urls', namespace='blog')),
     path('pages/', include('pages.urls', namespace='pages')),
     path('admin/', admin.site.urls),
 ]
+=======
+from django.conf import settings
+
+urlpatterns = [
+    path('', include('blog.urls', namespace='blog')),
+    path('posts/', include('blog.urls', namespace='blog')),
+    path('category', include('blog.urls', namespace='blog')),
+    path('pages/', include('pages.urls', namespace='pages')),
+    path('admin/', admin.site.urls),
+]
+
+if settings.DEBUG:
+    import debug_toolbar
+    # Добавить к списку urlpatterns список адресов из приложения debug_toolbar:
+    urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
+>>>>>>> 6f61790 (index)

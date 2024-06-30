@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+<<<<<<< HEAD
 {% block title %}
   {{ post.location }}. {{ post.date }}
 {% endblock %}
@@ -10,3 +11,35 @@
       {{ post.text|linebreaks }}
     </p>
     {% endblock %}
+=======
+  <head>    
+    {% block title %}
+      {{ details.location }}. {{ details.date }}
+    {% endblock %}
+  </head>
+  <body>	   
+    <main>
+      {% block content %}
+        <div class="container py-5">
+          <article>
+            <ul>
+              <li>
+                Место: {{ post.location }}              
+              </li>
+              <li>
+                Дата: {{ post.date }}
+              </li>
+              <li>
+                Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
+              </li>
+            </ul>         
+            <p>
+              {{ post.text|linebreaks }}
+            </p>          
+          </article>                
+        </div>
+      {% endblock %}  
+    </main>
+  </body>
+</html>
+>>>>>>> 6f61790 (index)

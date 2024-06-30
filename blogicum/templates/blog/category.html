@@ -1,7 +1,25 @@
 {% extends "base.html" %}
+<<<<<<< HEAD
 {% block title %}
   Публикации в категории {{ category }}
 {% endblock %} 
   {% block content %}
       <h1>Публикации в категории {{ category }}</h1>   
   {% endblock %}  
+=======
+  <head>    
+    {% block title %}
+      Публикации в категории {{ category }}
+    {% endblock %} 
+  </head>
+  <body>	   
+    <main>
+      {% block content %}
+        <div class="container py-5">
+          <h1>Публикации в категории {{ category }}</h1>   
+        </div>
+      {% endblock %}  
+    </main>
+  </body>
+</html>
+>>>>>>> 6f61790 (index)

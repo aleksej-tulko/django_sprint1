@@ -20,17 +20,33 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-1-r%#j35tnd2snz$ov56gr+y9v9=*-ma*+3@4%fcnjx$iu0(5@'
+=======
+SECRET_KEY = 'django-insecure-uvtu=crdyxbf0-ru(pzyd*k3iddc0)$1-2_1k(d_43f230bqcc'
+>>>>>>> 6f61790 (index)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+<<<<<<< HEAD
+=======
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+>>>>>>> 6f61790 (index)
 
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
+=======
+    'debug_toolbar',
+    'core.apps.CoreConfig',
+    'django.contrib.staticfiles',
+>>>>>>> 6f61790 (index)
     'blog.apps.BlogConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
@@ -38,10 +54,17 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+<<<<<<< HEAD
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
+=======
+]
+
+MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+>>>>>>> 6f61790 (index)
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,6 +111,10 @@ DATABASES = {
     }
 }
 
+<<<<<<< HEAD
+=======
+LANGUAGE_CODE = 'ru-RU'
+>>>>>>> 6f61790 (index)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -111,7 +138,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
+<<<<<<< HEAD
 LANGUAGE_CODE = 'en-us'
+=======
+LANGUAGE_CODE = 'ru-Ru'
+>>>>>>> 6f61790 (index)
 
 TIME_ZONE = 'UTC'
 
